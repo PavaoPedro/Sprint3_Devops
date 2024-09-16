@@ -1,0 +1,34 @@
+﻿@model MAI.Models.Cidade;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.CidadeNome)</h1>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCidade">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@if (Model.Estado is null)
+{
+    <p>
+        <a asp-controller="Estado" asp-action="Create" asp-route-id="@Model?.IdEstado">Cadastrar Estado</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-controller="Estados" asp-action="Edit" asp-route-id="@Model?.IdEstado">Alterar Estado</a>
+    </p>
+
+    <h3>Estado</h3>
+
+    @Html.DisplayFor(model => model.Estado.EstadoNome)
+    @Html.DisplayFor(model => model.Estado.Sigla)
+
+    }
+}
+
